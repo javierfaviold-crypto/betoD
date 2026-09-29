@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los 50 de Roberto Luna</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #060c18;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Contenedor principal estilo tarjeta digital vertical idéntica a la imagen */
+        .invitation-card {
+            max-width: 480px;
+            width: 100%;
+            background: 
+                radial-gradient(circle at 50% 30%, rgba(20, 38, 70, 0.7) 0%, rgba(6, 12, 24, 0.95) 70%),
+                url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=800') center/cover;
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 35px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), inset 0 0 30px rgba(212,175,55,0.15);
+            overflow: hidden;
+        }
+
+        /* Marco interior fino dorado */
+        .invitation-card::after {
+            content: '';
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            pointer-events: none;
+            border-radius: 8px;
+        }
+
+        /* Encabezado */
+        .top-subtitle {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #f3e5ab;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .script-mis {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
+            color: #ffffff;
+            line-height: 0.8;
+            text-shadow: 0 0 10px rgba(212,175,55,0.4);
+        }
+
+        /* Número 50 gigante dorado brillante */
+        .big-number-container {
+            position: relative;
+            margin: 10px 0;
+            display: inline-block;
+        }
+
+        .big-number {
+            font-size: 6.5rem;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(135deg, #ffe885 0%, #d4af37 40%, #fff6cc 70%, #9c7b1e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
+            letter-spacing: -2px;
+        }
+
+        .script-anos {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #ffffff;
+            position: absolute;
+            bottom: 5px;
+            right: -45px;
+            text-shadow: 0 0 10px rgba(212,175,55,0.5);
+        }
+
+        /* Frases descriptivas */
+        .subtext-vida {
+            font-size: 0.75rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #dcdcdc;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px auto;
+            color: #d4af37;
+            font-size: 0.9rem;
+            max-width: 250px;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            height: 1px;
+            flex: 1;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+
+        .invitation-text {
+            font-size: 0.9rem;
+            color: #e2e2e2;
+            line-height: 1.5;
+            max-width: 320px;
+            margin: 0 auto 20px auto;
+        }
+
+        /* Nombre principal */
+        .main-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.6rem;
+            color: #f3e5ab;
+            line-height: 1;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            margin: 10px 0;
+        }
+
+        .badge-50 {
+            display: inline-block;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #ffffff;
+            border-top: 1px solid rgba(212,175,55,0.6);
+            border-bottom: 1px solid rgba(212,175,55,0.6);
+            padding: 4px 20px;
+            margin-bottom: 25px;
+        }
+
+        /* Sección de 4 columnas de datos (Fecha, Hora, Lugar, WhatsApp) */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            background: rgba(8, 15, 30, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            padding: 12px 5px;
+            margin-bottom: 25px;
+        }
+
+        .info-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 2px;
+            position: relative;
+        }
+
+        /* Líneas divisorias verticales entre columnas */
+        .info-col:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -3px;
+            top: 15%;
+            height: 70%;
+            width: 1px;
+            background: rgba(212, 175, 55, 0.3);
+        }
+
+        .info-icon {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: #d4af37;
+        }
+
+        .info-title {
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #d4af37;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .info-desc {
+            font-size: 0.65rem;
+            color: #e2e2e2;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+
+        .info-desc a {
+            color: #e2e2e2;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        /* Frase final de cierre */
+        .footer-script {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: #f3e5ab;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            margin-top: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-script::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: #d4af37;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invitation-card">
+        <div class="top-subtitle">— ESTÁS INVITADO A CELEBRAR —</div>
+        
+        <div class="script-mis">Mis</div>
+        
+        <div class="big-number-container">
+            <span class="big-number">50</span>
+            <span class="script-anos">Años</span>
+        </div>
+
+        <div class="subtext-vida">DE VIDA, AMIGOS Y BUENOS MOMENTOS</div>
+
+        <div class="divider">★</div>
+
+        <p class="invitation-text">
+            Te espero para compartir juntos esta fecha tan especial.
+        </p>
+
+        <div class="main-name">Roberto Luna</div>
+        
+        <div>
+            <span class="badge-50">— 50 AÑOS —</span>
+        </div>
+
+        <!-- BLOQUE DE 4 COLUMNAS IDÉNTICO A LA IMAGEN -->
+        <div class="info-grid">
+            <!-- 1. FECHA -->
+            <div class="info-col">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
+                </div>
+                <div class="info-title">FECHA</div>
+                <div class="info-desc">10 de Octubre de 2026</div>
+            </div>
+
+            <!-- 2. HORA -->
+            <div class="info-col">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                </div>
+                <div class="info-title">HORA</div>
+                <div class="info-desc">A las 20:00 horas</div>
+            </div>
+
+            <!-- 3. LUGAR DE ENCUENTRO -->
+            <div class="info-col">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
+                <div class="info-title">LUGAR DE ENCUENTRO</div>
+                <div class="info-desc">
+                    <a href="https://maps.google.com/?q=Av+Iriarte+2332+Buenos+Aires" target="_blank">Av. Iriarte 2332</a>
+                </div>
+            </div>
+
+            <!-- 4. CONFIRMACIÓN POR WHATSAPP -->
+            <div class="info-col">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+                </div>
+                <div class="info-title">CONFIRMACIÓN POR WHATSAPP</div>
+                <div class="info-desc">
+                    <a href="https://wa.me/5491125252014?text=Hola%20Roberto,%20confirmo%20mi%20asistencia%20a%20tu%20cumpleaños%20🎉" target="_blank">1125252014</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-script">¡Te espero!</div>
+    </div>
+
+</body>
+</html>
